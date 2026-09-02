@@ -33,6 +33,7 @@
   --c-tax:     #9c2e2e; --c-tax-bg:     rgba(156, 46, 46, 0.09);
   --c-drinks:  #6a3f8c; --c-drinks-bg:  rgba(106, 63, 140, 0.09);
   --c-momo:    #a45078; --c-momo-bg:    rgba(164, 80, 120, 0.09);
+  --c-fuel:    #2b6f6d; --c-fuel-bg:    rgba(43, 111, 109, 0.09);
 
   color-scheme: light;
 }
@@ -60,6 +61,7 @@
     --c-tax:     #e08a8a; --c-tax-bg:     rgba(224, 138, 138, 0.12);
     --c-drinks:  #b799d6; --c-drinks-bg:  rgba(183, 153, 214, 0.12);
     --c-momo:    #d8a2be; --c-momo-bg:    rgba(216, 162, 190, 0.12);
+    --c-fuel:    #7fc4c2; --c-fuel-bg:    rgba(127, 196, 194, 0.12);
 
     color-scheme: dark;
   }
@@ -221,11 +223,11 @@ main {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
 }
 
 /* Card --------------------------------------------------------------- */
@@ -236,8 +238,11 @@ main {
   background: var(--bg-elevated);
   color: var(--ink);
   min-height: 232px;
-  transition: background 200ms ease;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: background 200ms ease, border-color 200ms ease;
 }
+.card:hover { border-color: var(--border-strong); }
 .card:hover { background: var(--bg); }
 .card:hover .go { transform: translateX(3px); color: var(--card-accent, var(--ink-strong)); }
 .card:hover .card-name { color: var(--ink-strong); }
@@ -249,6 +254,7 @@ main {
 .mark-tax-card     { --card-accent: var(--c-tax); }
 .mark-drinks-card  { --card-accent: var(--c-drinks); }
 .mark-momo-card    { --card-accent: var(--c-momo); }
+.mark-fuel-card    { --card-accent: var(--c-fuel); }
 
 .card-date {
   position: absolute;
@@ -277,6 +283,7 @@ main {
 .mark-tax     { background: var(--c-tax-bg);     color: var(--c-tax); }
 .mark-drinks  { background: var(--c-drinks-bg);  color: var(--c-drinks); }
 .mark-momo    { background: var(--c-momo-bg);    color: var(--c-momo); }
+.mark-fuel    { background: var(--c-fuel-bg);    color: var(--c-fuel); }
 
 .tag {
   font-family: var(--font-mono);
